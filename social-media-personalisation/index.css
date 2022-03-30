@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Piazzolla:wght@600&display=swap');
 body{
     background-color: #e3e1e1;
+    overflow-x: hidden;
 }
 
 .welcome{
@@ -214,3 +215,75 @@ p{
     text-align: center;
 }
 
+.navbar{
+    height: 1024px;
+    width: 260px;
+    display: flex;
+    position: fixed;
+    z-index: 10;
+    background: #2B2D42;
+    left: 0px;
+    top: 90px;
+
+    background: rgba(92, 164, 169, 0.71);
+}
+
+.sidebar{
+    display: block;
+    list-style: none;
+    width: 90vw;
+    padding-top: 15vw;
+    align-items: center;
+}
+
+.sidebar i{
+    padding: 20px;
+}
+
+.sidebar a{
+    color: white;
+    font-size: 20px;
+}
+
+.search_div .search{
+    top: 20px;
+    left: 300px;
+    width: 650px;
+    height: 40px;
+    background-color: #e3e1e1;
+    border-radius: 10px;
+    position: fixed;
+    font-family: 'Piazzolla', serif;
+    color: black;
+    font-size: 18px;
+    border-style: none;
+}
+
+.submit{
+    top: 20px;
+    position: absolute;
+    left: 904px;
+    height: 40px;
+    background-color: #e3e1e1;
+    width: 40px;
+    border-style: none;
+    cursor: pointer;
+}
+
+.feeds{
+    position: absolute;
+    width: 900px;
+    height: 560px;
+    left: 360px;
+    top: 120px;
+
+    background: rgba(255, 255, 255, 0.77);
+    border-radius: 25px;
+}
+/* .welcome .user{
+    float: right;
+    padding-right: 10px;
+    vertical-align: top;
+    margin-top: 5px;
+    top: 0px;
+} */
