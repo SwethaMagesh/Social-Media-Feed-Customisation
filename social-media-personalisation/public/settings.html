@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <title>Allure</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="HandheldFriendly" content="true">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <body>
+            <div class="welcome">
+                <h1>ALLURE</h1>
+            </div>
+            <nav class="navbar" id="navbar">
+                
+                <ul class="sidebar">
+                    <i id="qr" class="fa fa-qrcode"></i>
+                    <a href="home.html" id="feeds">FEEDS</a><br><br>
+                    <i id="settings" class="fa fa-gear"></i>
+                    <a href="" id="settings">SETTINGS</a><br><br>
+                    <i id="signout" class="fa fa-sign-out"></i>
+                    <a href="login.html" id="logout">LOGOUT</a>
+                </ul>
+            </nav>
+            <div class="edit_prof">
+                <h1>EDIT PROFILE</h1>
+                <form>
+                    <div>
+                        <label>Name</label>
+                        <span>
+                            <input type="text" name="name" class="input"/>
+                        </span>
+                    </div>
+
+                    <div>
+                        <label>Email Id</label>
+                        <span>
+                            <input type="email" name="email" class="input"/>
+                        </span>
+                    </div>
+
+                    <div>
+                        <label>Age Category</label>
+                        <span>
+                            <input type="text" name="age" list="age_c" class="input"/>
+                            <datalist id="age_c">
+                                <option>18-24</option>
+                                <option>25-34</option>
+                                <option>35-44</option>
+                                <option>45-54</option>
+                                <option>55-64</option>
+                                <option>65+</option>
+                            </datalist>
+                        </span>
+                    </div>
+
+                    <div>
+                        <label>Location</label>
+                        <span>
+                            <input type="text" name="location" class="input"/>
+                        </span>
+                    </div>
+
+                    <div>
+                        <label>Category</label>
+                        <span>
+                            <input type="text" name="category" class="input"/>
+                        </span>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <input type="submit" name="submit" class="submit_btn" value="SAVE"/>
+                    </div>
+
+                </form>
+            </div>
+        </body> 
+    </head>
+</html>
