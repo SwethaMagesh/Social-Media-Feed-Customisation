@@ -2,6 +2,7 @@ var express = require("express")
 var bodyParser = require("body-parser")
 var mongoose = require("mongoose")
 var User = require("./models/user.js")
+var Post = require("./models/post.js")
 const app = express()
 
 app.use(bodyParser.json())
@@ -47,6 +48,15 @@ app.post("/signup",(req,res)=>{
     return res.redirect('login.html')
 })
 
+// function insertPosts(){
+//     data = []
+//     db.collection('posts').insertMany(data,(err,collection)=>{
+//         if(err){
+//             throw err;
+//         }
+//         console.log("Records posts inserted");
+//     });
+// }
 app.post('/login', (req,res)=>{
 
     var email = req.body.email;
@@ -59,7 +69,7 @@ app.post('/login', (req,res)=>{
         else{
             user_details.filter(function(arr){
                 if(arr.password == password){
-                    console.log("LoggedIn successfully");
+                    console.log("LoggedIn successfully");                    
                     return res.redirect("home.html")
                 }
                 return res.redirect("login.html")
