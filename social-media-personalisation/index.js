@@ -60,7 +60,7 @@ app.post('/login', (req,res)=>{
             user_details.filter(function(arr){
                 if(arr.password == password){
                     console.log("LoggedIn successfully");
-                    return res.redirect("home.html")
+                    return res.redirect("feeds.html")
                 }
                 return res.redirect("login.html")
             });
