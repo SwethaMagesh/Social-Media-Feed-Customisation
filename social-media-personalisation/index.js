@@ -3,6 +3,7 @@ var bodyParser = require("body-parser")
 var mongoose = require("mongoose")
 var User = require("./models/user.js")
 const app = express()
+var Post = require("./models/post.js")
 
 app.use(bodyParser.json())
 app.use(express.static('public'))
@@ -21,7 +22,23 @@ var db = mongoose.connection;
 
 db.on('error',()=>console.log("Error in connecting to db"));
 db.once('open',()=>console.log("Connected to Database"));
+// db.collection("posts").find({},function(err,result){
+//     if(err) throw err;
+//     console.log(result.text);
+// });
 
+mongoose.connect(url).then((client)=>{
+    const connect = client.db(Test_db);
+    console.log("hi");
+    const collection = connect
+        .collection("posts");
+    console.log("Connected");
+    collection.find({}).toArray().then((ans)=>{
+        console.log(ans);
+    });
+}).catch((err)=>{
+    console.log(err.Message);
+})
 
 app.post("/signup",(req,res)=>{
     var name = req.body.name;
@@ -67,6 +84,31 @@ app.post('/login', (req,res)=>{
         }
     })   
 })
+// var post_details = Post.find({})
+// Post.find({}, 'Post data',(err,post_details)=>{
+//     if(err){
+//         return handleError(err);
+//     }
+//     else{
+//         post_details.filter(function(arr){
+//             console.log(arr.text);
+//         });
+//     }
+// }) 
+
+// app.get('/feeds',function(req,res,next){
+//     Post.find((err,docs)=>{
+//         if(!err)
+//         {
+//             res.render("list",{
+//                 data:docs
+//             });
+//             console.log("Retrieved successfully");
+//         }else{
+//             console.log("Failed to retrieve"+err);
+//         }
+//     });
+// });
 
 app.get("/",(req,res)=>{
     res.set({
