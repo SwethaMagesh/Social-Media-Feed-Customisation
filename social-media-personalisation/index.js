@@ -22,7 +22,7 @@ var db = mongoose.connection;
 
 db.on('error',()=>console.log("Error in connecting to db"));
 db.once('open',()=>console.log("Connected to Database"));
-var posts_fetched = fetchPosts(30);
+// var posts_fetched = fetchPosts(30);
 
 
 app.post("/signup",(req,res)=>{
@@ -48,23 +48,22 @@ app.post("/signup",(req,res)=>{
 
     return res.redirect('login.html')
 })
-function fetchPosts(N){
-    console.log("fetching");
-    Post.find({category:'C0'}, 'author text',(err,post_details)=>{
-        if(err){
-            console.log("hi, err", err)
-            return handleError(err);
-        }
-        else{
-            // post_details.filter(function(arr){
-            //     console.log(arr);
-            // });
-            console.log(post_details.length)
-            return post_details;
-        }
-    }).limit(N)
-}
-
+// function fetchPosts(N){
+//     console.log("fetching");
+//     Post.find({category:'C0'}, 'author text',(err,post_details)=>{
+//         if(err){
+//             console.log("hi, err", err)
+//             return handleError(err);
+//         }
+//         else{
+//             // post_details.filter(function(arr){
+//             //     console.log(arr);
+//             // });
+//             console.log(post_details.length)
+//             return JSON.parse(JSON.stringify(post_details));
+//         }
+//     }).limit(N)
+//  }
 // function insertPosts(){
 //     data = []
 //     db.collection('posts').insertMany(data,(err,collection)=>{
@@ -74,6 +73,20 @@ function fetchPosts(N){
 //         console.log("Records posts inserted");
 //     });
 // }
+
+app.get('/feeds/:limit', (req,res) => {
+    
+    Post.find({category:'C10'}, 'author text',(err,post_details)=>{
+        if(err){
+            console.log("hi, err", err)
+            return handleError(err);
+        }
+        else{
+            res.json(JSON.parse(JSON.stringify(post_details)));
+        }
+    }).limit(req.params.limit)
+})
+
 app.post('/login', (req,res)=>{
 
     var email = req.body.email;
@@ -97,10 +110,9 @@ app.post('/login', (req,res)=>{
 
 app.get("/",(req,res)=>{
     res.set({
-        "ALLow-access-ALLow-Origin": '*'
+        "Allow-access-Allow-Origin": '*'
     })
     return res.redirect('index.html')
 }).listen(8000);
 
 console.log("listening on port 8000");
-
