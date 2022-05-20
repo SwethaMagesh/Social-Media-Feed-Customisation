@@ -6,6 +6,7 @@ post = new schema({
     time: String,
     author: String,
     text: String,
+    likes: String,
     category: String
 }),
 

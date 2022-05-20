@@ -3,6 +3,7 @@ var bodyParser = require("body-parser")
 var mongoose = require("mongoose")
 var User = require("./models/user.js")
 var Post = require("./models/post.js")
+var Final_result = require("./models/Final_result.js")
 const app = express()
 
 app.use(bodyParser.json())
@@ -73,19 +74,35 @@ app.post("/signup",(req,res)=>{
 //         console.log("Records posts inserted");
 //     });
 // }
-
+// insertPosts();
 app.get('/feeds/:limit', (req,res) => {
-    
-    Post.find({category:'C10'}, 'author text',(err,post_details)=>{
+    console.log("hi")
+    Final_result.find({User_id:"17"}, 'author text date time ',(err,final_results)=>{
         if(err){
             console.log("hi, err", err)
             return handleError(err);
         }
         else{
-            res.json(JSON.parse(JSON.stringify(post_details)));
+            
+            res.json(JSON.parse(JSON.stringify(final_results)));
         }
     }).limit(req.params.limit)
 })
+
+// app.get('/feeds/:id/:number_of_likes',(req)=>{
+//     console.log("hi")
+//     Post.update({id:req.params.id},{$set:{Likes:req.params.number_of_likes}},function(err,result){
+//         if(err){
+//             console.log("Err",err);
+//             return handleError(err);
+//         }
+//         else{
+//             console.log(req.params.id);
+//             console.log(req.params.number_of_likes);
+//             console.log("Updated successfully");
+//         }
+//     })
+// })
 
 app.post('/login', (req,res)=>{
 
@@ -99,7 +116,8 @@ app.post('/login', (req,res)=>{
         else{
             user_details.filter(function(arr){
                 if(arr.password == password){
-                    console.log("LoggedIn successfully");                    
+                    console.log("LoggedIn successfully");     
+
                     return res.redirect("feeds.html")
                 }
                 return res.redirect("login.html")
